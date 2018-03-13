@@ -30,4 +30,38 @@ public class MatrixTraverse {
     return result;
   }
 
+  public static List<Integer> spiral(List<List<Integer>> matrix) {
+    if (matrix == null || matrix.size() == 0) {
+      return emptyList();
+    }
+    List<Integer> result = new ArrayList<>();
+    int top = 0;
+    int bottom = matrix.size() - 1;
+    int left = 0;
+    int right = matrix.get(0).size() - 1;
+    while (top <= bottom && left <= right) {
+      for (int i = left; i <= right; i++) {
+        result.add(matrix.get(top).get(i));
+      }
+      top += 1;
+      for (int i = top; i <= bottom; i++) {
+        result.add(matrix.get(i).get(right));
+      }
+      right -= 1;
+      if (top <= bottom) {
+        for (int i = right; i >= left; i--) {
+          result.add(matrix.get(bottom).get(i));
+        }
+        bottom -= 1;
+      }
+      if (left <= right) {
+        for (int i = bottom; i >= top; i--) {
+          result.add(matrix.get(i).get(left));
+        }
+        left += 1;
+      }
+    }
+    return result;
+  }
+
 }
