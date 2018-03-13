@@ -5,9 +5,9 @@ import static java.util.Collections.emptyList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zigzag {
+public class MatrixTraverse {
 
-  public static List<Integer> getZigzag(List<List<Integer>> matrix) {
+  public static List<Integer> zigzag(List<List<Integer>> matrix) {
     if (matrix == null || matrix.size() == 0) {
       return emptyList();
     }
