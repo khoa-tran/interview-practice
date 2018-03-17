@@ -36,4 +36,17 @@ public class Fibonacci {
     return result;
   }
 
+  public static int iterativelyMemoized(int n) {
+    if (n <= 0) {
+      throw new IllegalArgumentException("input must be positive integer");
+    }
+    int[] dict = new int[n + 1];
+    dict[0] = 0;
+    dict[1] = 1;
+    for (int i = 2; i <= n; i++) {
+      dict[i] = dict[i - 1] + dict[i - 2];
+    }
+    return dict[n];
+  }
+
 }
