@@ -41,4 +41,21 @@ public class FibonacciTest {
     assertThat(Fibonacci.memoized(25)).isEqualTo(75025);
   }
 
+  @Test
+  public void iterativelyMemoized() {
+    assertThatExceptionOfType(IllegalArgumentException.class)
+        .isThrownBy(() -> Fibonacci.iterativelyMemoized(0))
+        .withMessage("input must be positive integer");
+    assertThatExceptionOfType(IllegalArgumentException.class)
+        .isThrownBy(() -> Fibonacci.iterativelyMemoized(-6))
+        .withMessage("input must be positive integer");
+    assertThat(Fibonacci.iterativelyMemoized(1)).isEqualTo(1);
+    assertThat(Fibonacci.iterativelyMemoized(2)).isEqualTo(1);
+    assertThat(Fibonacci.iterativelyMemoized(3)).isEqualTo(2);
+    assertThat(Fibonacci.iterativelyMemoized(4)).isEqualTo(3);
+    assertThat(Fibonacci.iterativelyMemoized(5)).isEqualTo(5);
+    assertThat(Fibonacci.iterativelyMemoized(12)).isEqualTo(144);
+    assertThat(Fibonacci.iterativelyMemoized(25)).isEqualTo(75025);
+  }
+
 }
