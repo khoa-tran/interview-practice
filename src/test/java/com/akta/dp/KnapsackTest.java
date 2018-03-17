@@ -17,6 +17,7 @@ public class KnapsackTest {
         Item.of(3, 7));
     int capacity = 2;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(0);
+    assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(0);
   }
 
   @Test
@@ -24,6 +25,7 @@ public class KnapsackTest {
     List<Item> items = emptyList();
     int capacity = 2;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(0);
+    assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(0);
   }
 
   @Test
@@ -33,6 +35,7 @@ public class KnapsackTest {
         Item.of(3, 7));
     int capacity = 10;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(12);
+    assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(12);
   }
 
   @Test
@@ -42,6 +45,7 @@ public class KnapsackTest {
         Item.of(3, 7));
     int capacity = 5;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(7);
+    assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(7);
   }
 
   @Test
@@ -54,6 +58,7 @@ public class KnapsackTest {
         Item.of(5, 2));
     int capacity = 10;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(16);
+    assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(16);
   }
 
 }

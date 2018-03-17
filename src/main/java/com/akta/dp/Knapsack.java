@@ -66,4 +66,32 @@ public class Knapsack {
     }
   }
 
+  public static int solverWithMemoize(List<Item> items, int capacity) {
+    return solverWithMemoizeHelper(items, 0, capacity, new Integer[items.size() + 1][capacity + 1]);
+  }
+
+  private static int solverWithMemoizeHelper(
+      List<Item> items,
+      int index,
+      int remainingCapacity,
+      Integer[][] memoized) {
+    if (memoized[index][remainingCapacity] != null) {
+      return memoized[index][remainingCapacity];
+    }
+    int result;
+    if (index >= items.size() || remainingCapacity == 0) {
+      result = 0;
+    } else if (remainingCapacity < items.get(index).getWeight()) {
+      result = solverWithMemoizeHelper(items, index + 1, remainingCapacity, memoized);
+    } else {
+      int tmp1 = solverWithMemoizeHelper(items, index + 1, remainingCapacity, memoized);
+      Item currentItem = items.get(index);
+      int tmp2 = currentItem.getValue() + solverWithMemoizeHelper(items, index + 1,
+          remainingCapacity - currentItem.getWeight(), memoized);
+      result = max(tmp1, tmp2);
+    }
+    memoized[index][remainingCapacity] = result;
+    return result;
+  }
+
 }
