@@ -18,6 +18,7 @@ public class KnapsackTest {
     int capacity = 2;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(0);
     assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(0);
+    assertThat(Knapsack.solverWithItems(items, capacity)).isEmpty();
   }
 
   @Test
@@ -26,6 +27,7 @@ public class KnapsackTest {
     int capacity = 2;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(0);
     assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(0);
+    assertThat(Knapsack.solverWithItems(items, capacity)).isEmpty();
   }
 
   @Test
@@ -36,6 +38,8 @@ public class KnapsackTest {
     int capacity = 10;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(12);
     assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(12);
+    assertThat(Knapsack.solverWithItems(items, capacity))
+        .containsOnly(Item.of(4, 5), Item.of(3, 7));
   }
 
   @Test
@@ -46,6 +50,7 @@ public class KnapsackTest {
     int capacity = 5;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(7);
     assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(7);
+    assertThat(Knapsack.solverWithItems(items, capacity)).containsOnly(Item.of(3, 7));
   }
 
   @Test
@@ -59,6 +64,11 @@ public class KnapsackTest {
     int capacity = 10;
     assertThat(Knapsack.solver(items, capacity)).isEqualTo(16);
     assertThat(Knapsack.solverWithMemoize(items, capacity)).isEqualTo(16);
+    assertThat(Knapsack.solverWithItems(items, capacity)).containsOnly(
+        Item.of(1, 5),
+        Item.of(2, 3),
+        Item.of(4, 5),
+        Item.of(2, 3));
   }
 
 }
